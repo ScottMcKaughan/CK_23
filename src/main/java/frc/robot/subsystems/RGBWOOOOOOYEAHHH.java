@@ -15,6 +15,8 @@ import frc.robot.Constants.RGBConstants;
 public class RGBWOOOOOOYEAHHH extends SubsystemBase {
   // TODO: make more arguments to tailor how the rainbow looks and moves
   m_led = new AddressableLED(// robot map led port here)
+    
+  private int m_rainbowFirstPixelHue = 0;
 
   public RGBWOOOOOOYEAHHH() {
 
@@ -82,18 +84,15 @@ public class RGBWOOOOOOYEAHHH extends SubsystemBase {
     * sets the LED buffer to this info but does not change the LEDs
     * do setData after this to update a strand of LEDs
     */
-  privte void solidColorToLEDs(int hue, int saturation, int value) { // pass through a color object or three ints? (3 ints for now)
-    
-    final var hue = // take color and convert it to hue
-    
+  privte void solidColorToLEDs(int red, int green, int blue) { // pass through a color object or three ints? (3 ints for now)
     for (var i = 0; i < m_ledBuffer.getLength(); i++) { 
-      m_ledBuffer.setHSV(i, hue, 255, 128);
+      m_ledBuffer.setRGB(red,green,blue);
     }
   }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    rainbow(// put in speed number here);
+    solidColorToLEDs(50,50,255);
       
     m_led.setData(m_ledBuffer);
   }
