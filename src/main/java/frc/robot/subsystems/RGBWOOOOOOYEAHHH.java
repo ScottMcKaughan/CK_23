@@ -68,16 +68,18 @@ public class RGBWOOOOOOYEAHHH extends SubsystemBase {
   privte void rainbowMoveWithRobot(int speed) { 
     // the goal here is to make it so it almost apperes like the colors are not moving in space, staying in the same spot as the robot moves forwards or backwards
     // TODO: add a correction value to turn speed into a number for sliding the rainbow
-    for (var i = 0; i < m_ledBuffer.getLength(); i++) { // for every LED in the strand
 
-      final var hue = (m_rainbowFirstPixelHue + (i * 180 / m_ledBuffer.getLength())) % 180; // set it's hue to one higher than the previous (make sure it's in bounds)
-
-      m_ledBuffer.setHSV(i, hue, 255, 128); // set that LED's hue
-    }
-
-    m_rainbowFirstPixelHue += speed; // good place for correction value // change the first LED's hue according to the robot's speed for the next go around
-
-    m_rainbowFirstPixelHue %= 180; // make sure the new hue is in bounds
+    // this will have to use the same solution as peel but with speed times a constant for the rate
+  }
+    
+    /**
+    * rainbow that moves the rainbow colors along the sides of the robot
+    * sets the LED buffer to this info but does not change the LEDs
+    * do setData after this to update a strand of LEDs
+    */
+  privte void rainbowPeel(int rate) { 
+      // the idea here is to make a rainbow that moved down the sides of the robot in the same direction.
+      // must find a scheme to split a single addressable LED strip into two segments so this effect can work properly
   }
     
     /**
